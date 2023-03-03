@@ -58,9 +58,11 @@ def get_data():
 
 running = True
 
+get_data()
+
+
 while running:
 
-    get_data()
     run_again = input('Would you like to simulate again?\n(y/n)').lower()
     if run_again == 'y':
         get_data()
