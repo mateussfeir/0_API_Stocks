@@ -46,7 +46,7 @@ for date in list_of_days:
 
 # 4) Plot the chart
 
-plt.title(f'TSLA Volume of the last {duration} days')
+plt.title(f'{chosen_stock} Volume of the last {duration} days')
 plt.xlabel('Date')
 plt.ylabel('Volume')
 plt.bar(list_of_days, volume_of_the_days)
