@@ -1,10 +1,13 @@
 import requests
 
 # Shortcut pathway: python winning_portfolios.py
+
+period = input('Please input the year and month requested (yyyy-mm):')
+
 url = 'https://www.alphavantage.co/query'
 params = {
     'function' : 'TOURNAMENT_PORTFOLIO',
-    'season' : '2021-09',
+    'season' : period,
     'apikey' : 'TE1E1KD330UYLRHQ'
 }
 
