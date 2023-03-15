@@ -81,8 +81,8 @@ ytick_labels = [f"{i}B" for i in ytick_locs]
 plt.yticks(ytick_locs, ytick_labels)
 
 # Add dashed lines at y-axis tick locations
-plt.grid(axis='y', linestyle='dashdot', linewidth=0.5)
-
+plt.grid(axis='y', linestyle='dashdot', linewidth=0.15)
+plt.grid(axis='x', linestyle='dashdot', linewidth=0.15)
 plt.xlabel('Date')
 plt.ylabel('Earnings (Billion)')
 plt.title(f"{chosen_stock}'s {period} {information}")
