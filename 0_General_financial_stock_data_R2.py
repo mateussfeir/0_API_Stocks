@@ -75,10 +75,11 @@ plt.gca().xaxis.set_tick_params(rotation=45, labelsize=10)
 plt.bar(dates, chosen_data_billion)
 
 # Set y-axis tick locations and labels
-max_val = int(max(chosen_data_billion)) + 1
-ytick_locs = range(0, max_val)
-ytick_labels = [f"{i}B" for i in ytick_locs]
-plt.yticks(ytick_locs, ytick_labels)
+if max(chosen_data_billion) > 1:
+    max_val = int(max(chosen_data_billion)) + 1
+    ytick_locs = range(0, max_val)
+    ytick_labels = [f"{i}B" for i in ytick_locs]
+    plt.yticks(ytick_locs, ytick_labels)
 
 # Add dashed lines at y-axis tick locations
 plt.grid(axis='y', linestyle='dashdot', linewidth=0.15)
@@ -87,7 +88,6 @@ plt.xlabel('Date')
 plt.ylabel('Earnings (Billion)')
 plt.title(f"{chosen_stock}'s {period} {information}")
 plt.show()
-
 
 
 
