@@ -1,3 +1,4 @@
+
 # New chalenge
 # 1) Create a code that connect earnings data from the Alpha Vantage capital
 # 2) Give the user the choice of chosing the ticker. And the period of earnings requested
@@ -5,7 +6,7 @@
 
 '''Solution:'''
 
-# 1) Create a function to push the data from the API (Aplication Programming Interface)
+# 1) Create a function to push data from the API (Aplication Programming Interface)
 
 import requests
 import matplotlib.pyplot as plt
@@ -54,16 +55,16 @@ earnings_list = []
 
 for earnings in data[f'{period}Reports']:
 
-    chosen_data = float(earnings[information])
+    financial_data = float(earnings[information])
     fiscal_date = earnings['fiscalDateEnding']
-    earnings_list.append((fiscal_date, chosen_data))
+    earnings_list.append((fiscal_date, financial_data))
 
 # 3.1) Separate the informations in the list 
 
 earnings_list.reverse()
 dates = [inf[0] for inf in earnings_list]
-chosen_data = [inf[1] for inf in earnings_list]
-chosen_data_billion = [x/1000000000 for x in chosen_data]
+financial_data = [inf[1] for inf in earnings_list]
+chosen_data_billion = [x/1000000000 for x in financial_data]
 # print(chosen_data_billion)
 
 
@@ -71,12 +72,21 @@ chosen_data_billion = [x/1000000000 for x in chosen_data]
 
 plt.style.use('dark_background')
 plt.gca().xaxis.set_tick_params(rotation=45, labelsize=10)
-plt.bar(dates, chosen_data)
+plt.bar(dates, chosen_data_billion)
+
+# Set y-axis tick locations and labels
+max_val = int(max(chosen_data_billion)) + 1
+ytick_locs = range(0, max_val)
+ytick_labels = [f"{i}B" for i in ytick_locs]
+plt.yticks(ytick_locs, ytick_labels)
+
+# Add dashed lines at y-axis tick locations
+plt.grid(axis='y', linestyle='dashdot', linewidth=0.5)
+
 plt.xlabel('Date')
 plt.ylabel('Earnings (Billion)')
 plt.title(f"{chosen_stock}'s {period} {information}")
 plt.show()
-
 
 
 
