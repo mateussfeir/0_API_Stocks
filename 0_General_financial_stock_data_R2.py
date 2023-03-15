@@ -1,11 +1,7 @@
-
 # New chalenge
 # 1) Create a code that connect earnings data from the Alpha Vantage capital
 # 2) Give the user the choice of chosing the ticker. And the period of earnings requested
 # 3) Plot the chart 
-
-# Path shortcut: /Users/mateussfeir/Desktop/Python/GPT\ Project\ stock\ market
-# File name: python Earnings_chart.py
 
 '''Solution:'''
 
@@ -74,11 +70,7 @@ chosen_data_billion = [x/1000000000 for x in chosen_data]
 # 4) Plot the chart
 
 plt.style.use('dark_background')
-plt.xticks(range(len(dates)), dates)
 plt.gca().xaxis.set_tick_params(rotation=45, labelsize=10)
-for i, tick in enumerate(plt.gca().xaxis.get_ticklabels()):
-    if i % 2 != 0:
-        tick.set_visible(False)
 plt.bar(dates, chosen_data)
 plt.xlabel('Date')
 plt.ylabel('Earnings (Billion)')
